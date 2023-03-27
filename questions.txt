@@ -1,0 +1,10 @@
+What is the capital of France?,London,Paris,Madrid,Berlin,2
+What is the highest mountain in the world?,Kilimanjaro,Mount Everest,Mont Blanc,Denali,2
+What is the currency of Japan?,Euro,Yen,Pound,Dollar,2
+What is the largest country in the world by area?,Russia,Canada,China,India,1
+What is the smallest continent by land area?,Asia,Africa,Australia,Antarctica,4
+What is the capital of Brazil?,Rio de Janeiro,São Paulo,Brasilia,Salvador,3
+What is the smallest country in the world by land area?,Monaco,Nauru,Vatican City,Tuvalu,3
+What is the largest ocean in the world?,Indian,Pacific,Atlantic,Arctic,2
+What is the currency of Mexico?,Euro,Yen,Peso,Dollar,3
+What is the largest desert in the world?,Sahara,Arabian,Kalahari,Australian,1
