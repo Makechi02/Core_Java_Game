@@ -40,6 +40,7 @@ public class Game {
         String name = scanner.next();
         handleRegistration(name);
         System.out.println("Hello " + player.getUsername() + " welcome to the game");
+        scanner.close();
     }
 
     private void handleRegistration(String name) {
@@ -60,6 +61,7 @@ public class Game {
 
         int choice = scanner.nextInt();
         processChoice(choice);
+        scanner.close();
     }
 
     private void processChoice(int choice) {
@@ -71,7 +73,7 @@ public class Game {
 
     private void handlePlay() {
         loading();
-        
+
         System.out.println("\nFastest Finger Question");
         gameGenerator.getQuestion();
         player.setScore(gameGenerator.getScore());

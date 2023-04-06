@@ -1,5 +1,7 @@
 package com.makechi.game;
 
+import com.makechi.constants.Question;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -8,7 +10,7 @@ import java.util.*;
 public class GameGenerator {
 
     private int score;
-    ArrayList<Question> questions = readQuestionsFromFile();
+    private final ArrayList<Question> questions = readQuestionsFromFile();
     private final int totalQuestions = questions.size();
 
     public void getQuestion() {
@@ -21,27 +23,21 @@ public class GameGenerator {
             Question question = questions.get(i);
             System.out.println("\nQuestion " + (i + 1) + ": " + question.questionText());
             ArrayList<String> choices = question.choices();
-//            Collections.shuffle(choices, new Random());
+            Collections.shuffle(choices, new Random());
             for (int j = 0; j < choices.size(); j++) {
                 System.out.println((j + 1) + ") " + choices.get(j));
             }
             System.out.print("Enter your choice: ");
-            String userChoice = scanner.nextLine();
-            if (Objects.equals(userChoice, question.correctChoice())) {
+            int userChoice = scanner.nextInt();
+            String userAnswer = choices.get(userChoice - 1);
+            if (Objects.equals(userAnswer, question.correctChoice())) {
                 System.out.println("Correct!");
                 score++;
             } else {
                 System.out.println("Incorrect!");
+                System.out.println("The correct answer is: " + question.correctChoice());
             }
         }
-    }
-
-    public int getScore() {
-        return score;
-    }
-
-    public int getTotalQuestions() {
-        return totalQuestions;
     }
 
     private static ArrayList<Question> readQuestionsFromFile() {
@@ -53,14 +49,21 @@ public class GameGenerator {
                 String[] parts = line.split(",");
                 String questionText = parts[0];
                 ArrayList<String> choices = new ArrayList<>(Arrays.asList(parts).subList(1, parts.length - 1));
-                String correctChoice = parts[parts.length - 1];
-                questions.add(new Question(questionText, choices, correctChoice));
+                int correctAnswer = Integer.parseInt(parts[parts.length - 1]);
+                String choice = choices.get(correctAnswer - 1);
+                questions.add(new Question(questionText, choices, choice));
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
         return questions;
     }
-}
 
-record Question(String questionText, ArrayList<String> choices, String correctChoice) {}
+    public int getScore() {
+        return score;
+    }
+
+    public int getTotalQuestions() {
+        return totalQuestions;
+    }
+}

@@ -31,3 +31,4 @@ bin/
 database.properties
 practice.txt
 .idea/
+/src/com/makechi/test/
